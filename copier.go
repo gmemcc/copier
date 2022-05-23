@@ -141,6 +141,9 @@ func copier(toValue interface{}, fromValue interface{}, opt Option) (err error) 
 		}
 
 		if to.IsNil() {
+			if from.IsNil() {
+				return
+			}
 			to.Set(reflect.MakeMapWithSize(toType, from.Len()))
 		}
 
